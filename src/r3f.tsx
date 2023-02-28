@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { getWebcamTexture } from './lib/three/getWebcamTexture'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Controls } from './r3f/Controls'
+import { Mesh } from 'three'
 
 const ThreeFiber = () => {
   const { gl, scene } = useThree()
@@ -34,7 +35,14 @@ const ThreeFiber = () => {
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
       <Controls isControl={true} />
-      {gltf && <primitive object={gltf.scene} scale={[10, 10, 10]} />}
+      {gltf && (
+        <primitive
+          object={gltf.scene}
+          scale={[10, 10, 10]}
+          position={[0, -3, 0]}
+          rotation={[Math.PI / 4, 0, 0]}
+        />
+      )}
     </>
   )
 }
