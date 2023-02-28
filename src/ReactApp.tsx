@@ -9,7 +9,6 @@ interface Props {
 
 export interface State {
   showWelcomeWindow: boolean
-  screenshotModal: boolean
   startThreeFiber: boolean
 }
 
@@ -34,7 +33,6 @@ const ReactApp: FC<Props> = ({ children }) => {
   // useReducer であれば dispatch だけを渡せばよいので、このアプリでは useReducer で状態を管理する
   const [state, dispach] = useReducer(reducer, {
     showWelcomeWindow: true,
-    screenshotModal: false,
     startThreeFiber: false,
   })
 
