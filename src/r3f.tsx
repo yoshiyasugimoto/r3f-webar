@@ -25,8 +25,7 @@ const ThreeFiber = () => {
     setWebCamTexture()
   }, [])
 
-  let gltf: any
-  setTimeout(() => (gltf = useLoader(GLTFLoader, 'yakiniku.glb')), 100)
+  const gltf = useLoader(GLTFLoader, 'yakiniku.glb')
 
   return (
     <>
