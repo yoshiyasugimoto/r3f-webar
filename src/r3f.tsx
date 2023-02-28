@@ -1,5 +1,5 @@
 import { useLoader, useThree } from '@react-three/fiber'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { getWebcamTexture } from './lib/three/getWebcamTexture'
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Controls } from './r3f/Controls'
@@ -14,7 +14,7 @@ const ThreeFiber = () => {
     gl.setSize(window.innerWidth, window.innerHeight)
   })
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gl.setPixelRatio(window.devicePixelRatio)
     gl.setSize(window.innerWidth, window.innerHeight)
 
