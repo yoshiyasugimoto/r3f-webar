@@ -2,6 +2,7 @@ import { FC, useReducer } from 'react'
 import { Typography } from '@mui/material'
 import ExplainCard from './components/ExplainCard'
 import CenteringFullScreenDialog from './components/CenteringFullScreenDialog'
+import Loading from './components/Loading/Loading'
 
 interface Props {
   children: React.ReactNode
@@ -9,11 +10,12 @@ interface Props {
 
 export interface State {
   showWelcomeWindow: boolean
+  showLoading: boolean
   startThreeFiber: boolean
 }
 
 export interface Action {
-  type: 'setWelcomeWindow' | 'startThreeFiber'
+  type: 'setWelcomeWindow' | 'showLoading' | 'hideLoading' | 'startThreeFiber'
   args?: any
 }
 
@@ -21,6 +23,10 @@ function reducer(state: State, { type, args }: Action): State {
   switch (type) {
     case 'setWelcomeWindow':
       return { ...state, showWelcomeWindow: args }
+    case 'showLoading':
+      return { ...state, showLoading: true }
+    case 'hideLoading':
+      return { ...state, showLoading: false }
     case 'startThreeFiber':
       return { ...state, startThreeFiber: args }
     default:
@@ -33,6 +39,7 @@ const ReactApp: FC<Props> = ({ children }) => {
   // useReducer であれば dispatch だけを渡せばよいので、このアプリでは useReducer で状態を管理する
   const [state, dispach] = useReducer(reducer, {
     showWelcomeWindow: true,
+    showLoading: false,
     startThreeFiber: false,
   })
 
@@ -52,6 +59,9 @@ const ReactApp: FC<Props> = ({ children }) => {
           </Typography>
         </ExplainCard>
       </CenteringFullScreenDialog>
+
+      {/* 読み込み中画像 */}
+      <Loading show={state.showLoading} />
 
       {/* Canvas */}
       {state.startThreeFiber && children}
