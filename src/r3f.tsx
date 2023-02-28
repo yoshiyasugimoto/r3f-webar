@@ -11,12 +11,12 @@ const ThreeFiber = () => {
 
   window.addEventListener('resize', () => {
     gl.setPixelRatio(window.devicePixelRatio)
-    gl.setSize(window.innerWidth, window.innerHeight)
+    gl.setSize(window.outerWidth, window.outerHeight)
   })
 
   useEffect(() => {
     gl.setPixelRatio(window.devicePixelRatio)
-    gl.setSize(window.innerWidth, window.innerHeight)
+    gl.setSize(window.outerWidth, window.outerHeight)
 
     const setWebCamTexture = async () => {
       scene.background = await getWebcamTexture(video)
