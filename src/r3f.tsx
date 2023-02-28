@@ -17,7 +17,6 @@ const ThreeFiber = () => {
   useEffect(() => {
     gl.setPixelRatio(window.devicePixelRatio)
     gl.setSize(window.innerWidth, window.innerHeight)
-
     const setWebCamTexture = async () => {
       scene.background = await getWebcamTexture(video)
       setLoading(false)
@@ -35,10 +34,7 @@ const ThreeFiber = () => {
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
       <Box position={[-1.2, 0, 0]} />
-      {/* <Box position={[1.2, 0, 0]} /> */}
-      <Suspense fallback={null}>
-        <primitive object={gltf.scene} />
-      </Suspense>
+      <primitive object={gltf.scene} />
     </>
   )
 }
