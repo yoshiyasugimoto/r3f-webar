@@ -34,13 +34,13 @@ const ThreeFiber = () => {
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
       <Controls isControl={true} />
-      {gltf && (
+      {/* {gltf && (
         <primitive
           object={gltf.scene}
           scale={[10, 10, 10]}
           position={[0, -3, 0]}
         />
-      )}
+      )} */}
     </>
   )
 }
