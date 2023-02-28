@@ -40,7 +40,6 @@ const ThreeFiber = () => {
           object={gltf.scene}
           scale={[10, 10, 10]}
           position={[0, -3, 0]}
-          rotation={[Math.PI / 4, 0, 0]}
         />
       )}
     </>
