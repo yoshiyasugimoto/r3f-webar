@@ -1,6 +1,7 @@
 import { FC, useReducer } from 'react'
 import { Typography } from '@mui/material'
 import ExplainCard from './components/ExplainCard'
+import CenteringFullScreenDialog from './components/CenteringFullScreenDialog'
 
 interface Props {
   children: React.ReactNode
@@ -40,7 +41,7 @@ const ReactApp: FC<Props> = ({ children }) => {
   return (
     <>
       {/* 最初に表示するモーダル */}
-      {state.showWelcomeWindow && (
+      <CenteringFullScreenDialog open={state.showWelcomeWindow}>
         <ExplainCard
           onClick={() => {
             dispach({ type: 'setWelcomeWindow', args: false })
@@ -52,7 +53,7 @@ const ReactApp: FC<Props> = ({ children }) => {
             このコンテンツをお楽しみいただくには、位置情報やカメラなどへのアクセスを許可いただく必要があります。
           </Typography>
         </ExplainCard>
-      )}
+      </CenteringFullScreenDialog>
 
       {/* Canvas */}
       {state.startThreeFiber && children}

@@ -1,5 +1,5 @@
 import { useLoader, useThree } from '@react-three/fiber'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Box from './r3f/Box'
 import { getWebcamTexture } from './lib/three/getWebcamTexture'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -34,7 +34,7 @@ const ThreeFiber = () => {
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
       <Box position={[-1.2, 0, 0]} />
-      <primitive object={gltf.scene} />
+      <primitive object={gltf.scene} scale={[10, 10, 10]} />
     </>
   )
 }
