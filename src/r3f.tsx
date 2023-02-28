@@ -7,7 +7,6 @@ import { Controls } from './r3f/Controls'
 const ThreeFiber = () => {
   const { gl, scene } = useThree()
   const video = document.createElement('video')
-  // const [gltf, setGltf] = useState<GLTF>()
   const gltf = useLoader(GLTFLoader, 'yakiniku.glb')
   window.addEventListener('resize', () => {
     gl.setPixelRatio(window.devicePixelRatio)
@@ -22,7 +21,6 @@ const ThreeFiber = () => {
       scene.background = await getWebcamTexture(video)
     }
     setWebCamTexture()
-    // setGltf(useLoader(GLTFLoader, 'yakiniku.glb'))
   }, [gltf])
 
   return (
