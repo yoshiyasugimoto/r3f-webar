@@ -11,7 +11,7 @@ const ThreeFiber = () => {
 
   window.addEventListener('resize', () => {
     gl.setPixelRatio(window.devicePixelRatio)
-    gl.setSize(window.innerWidth, window.innerHeight)
+    gl.setSize(window.innerWidth, window.innerHeight, true)
   })
 
   useEffect(() => {
