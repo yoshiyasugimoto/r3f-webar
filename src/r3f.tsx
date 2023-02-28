@@ -27,22 +27,18 @@ const ThreeFiber = () => {
 
   const gltf = useLoader(GLTFLoader, 'yakiniku.glb')
 
-  return loading ? (
-    <>loading...</>
-  ) : (
+  return (
     <>
       <ambientLight intensity={0.5} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
       <Controls isControl={true} />
-      {gltf && (
-        <primitive
-          object={gltf.scene}
-          scale={[10, 10, 10]}
-          position={[0, -2, 0]}
-          rotation={[Math.PI / 8, 0, 0]}
-        />
-      )}
+      <primitive
+        object={gltf.scene}
+        scale={[10, 10, 10]}
+        position={[0, -2, 0]}
+        rotation={[Math.PI / 8, 0, 0]}
+      />
     </>
   )
 }
