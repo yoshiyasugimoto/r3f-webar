@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { getWebcamTexture } from './lib/three/getWebcamTexture'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Controls } from './r3f/Controls'
-import { Mesh } from 'three'
 
 const ThreeFiber = () => {
   const { gl, scene } = useThree()
@@ -16,12 +15,12 @@ const ThreeFiber = () => {
   })
 
   useEffect(() => {
-    gl.setPixelRatio(window.devicePixelRatio)
-    gl.setSize(window.innerWidth, window.innerHeight)
     const setWebCamTexture = async () => {
       scene.background = await getWebcamTexture(video)
       setLoading(false)
     }
+    gl.setPixelRatio(window.devicePixelRatio)
+    gl.setSize(window.innerWidth, window.innerHeight)
     setWebCamTexture()
   }, [])
 
