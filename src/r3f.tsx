@@ -22,9 +22,7 @@ const ThreeFiber = () => {
       scene.background = await getWebcamTexture(video)
     }
     setWebCamTexture()
-    setTimeout(() => {
-      setGltf(useLoader(GLTFLoader, 'yakiniku.glb'))
-    })
+    setGltf(useLoader(GLTFLoader, 'yakiniku.glb'))
   }, [gltf])
 
   return (
