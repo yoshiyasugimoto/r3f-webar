@@ -1,13 +1,13 @@
 import { useLoader, useThree } from '@react-three/fiber'
 import { useEffect, useState } from 'react'
 import { getWebcamTexture } from './lib/three/getWebcamTexture'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Controls } from './r3f/Controls'
 
 const ThreeFiber = () => {
   const { gl, scene } = useThree()
   const video = document.createElement('video')
-  const [loading, setLoading] = useState(true)
+  const [gltf, setGltf] = useState<GLTF>()
 
   window.addEventListener('resize', () => {
     gl.setPixelRatio(window.devicePixelRatio)
@@ -20,12 +20,10 @@ const ThreeFiber = () => {
 
     const setWebCamTexture = async () => {
       scene.background = await getWebcamTexture(video)
-      setLoading(false)
     }
     setWebCamTexture()
-  }, [])
-
-  const gltf = useLoader(GLTFLoader, 'yakiniku.glb')
+    setGltf(useLoader(GLTFLoader, 'yakiniku.glb'))
+  }, [gltf])
 
   return (
     <>
